@@ -1,5 +1,3 @@
-//Código de: https://www.30secondsofcode.org/js/s/k-means
-
 export const kMeans = (data, k = 1) => {
   const centroids = data.slice(0, k);
   const distances = Array.from({ length: data.length }, () =>
