@@ -1,7 +1,5 @@
 # Visualização interativa de dados do Counter-Strike: Global Offensive
 
-[DEMO!](https://gabrielnogueiralt.github.io/) 
-
 ### Introdução
 Projeto realizado para a disciplina de Tópicos Avançados em Interfaces, ministrada pelo professor Nivan no Centro de Informática da UFPE.
 
@@ -19,7 +17,7 @@ Com isso, o objetivo desse projeto é analisar a performance de jogadores do mod
 ## 💻 Data Visualization
 
 <h1 align="center">
-    <img src=".github/cs-data-vis.png">
+    <img src=".github/cs-data-vis.png" width="400px">
 </h1>
 
 ### Autores

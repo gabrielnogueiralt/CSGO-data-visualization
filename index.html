@@ -1,124 +1,168 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>CSGO Data Viz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://www.w3schools.com/lib/w3-theme-black.css"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <script type="module" src="./backend/main.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="external-container">
+      <div class="loader"></div>
+      <div class="w3-theme side-menu">
+        <div class="options-container">
+          <p><strong>*(selecione primeiro o mapa)*</strong></p>
 
-<head>
-  <title>CSGO Data Viz</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css" />
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <script type="module" src="./backend/main.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-</head>
-
-<body>
-  <div class="external-container">
-    <div class="loader"></div>
-    <div class="w3-theme side-menu">
-      <div class="options-container">
-        <p><strong>*(selecione primeiro o mapa)*</strong></p>
-
-        <div class="maps">
-          <h5>Selecionar mapa</h5>
-          <div class="w3-card w3-container flex">
-            <button id="inferno-button" class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn">
-              Inferno
-            </button>
-            <button id="mirage-button" class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn">
-              Mirage
-            </button>
-            <button id="cache-button" class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn">
-              Cache
-            </button>
+          <div class="maps">
+            <h5>Selecionar mapa</h5>
+            <div class="w3-card w3-container flex">
+              <button
+                id="inferno-button"
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+              >
+                Inferno
+              </button>
+              <button
+                id="mirage-button"
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+              >
+                Mirage
+              </button>
+              <button
+                id="cache-button"
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+              >
+                Cache
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="filters">
-          <div class="w3-card w3-container" style="min-height: 150px">
-            <div>
-              <div class="tooltip">
-                <span class="tooltiptext tooltip-right">Ranks: C (gold 1 ao 4), B (AK 1 ao 3) e A (Xerife ao Águia
-                  2)</span>
-              </div>
-              <div class="flex">
-                <h5>Filtrar por rank</h5>
-                <div>
-                  <button class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey" id="rank-a-button">
-                    A
-                  </button>
-                  <button class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey" id="rank-b-button">
-                    B
-                  </button>
-                  <button class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey" id="rank-c-button">
-                    C
-                  </button>
+          <div class="filters">
+            <div class="w3-card w3-container" style="min-height: 150px">
+              <div>
+                <div class="tooltip">
+                  <span class="tooltiptext tooltip-right"
+                    >Ranks: C (gold 1 ao 4), B (AK 1 ao 3) e A (Xerife ao Águia
+                    2)</span
+                  >
+                </div>
+                <div class="flex">
+                  <h5>Filtrar por rank</h5>
+                  <div>
+                    <button
+                      class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-a-button"
+                    >
+                      A
+                    </button>
+                    <button
+                      class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-b-button"
+                    >
+                      B
+                    </button>
+                    <button
+                      class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-c-button"
+                    >
+                      C
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="flex">
-              <h5>Filtrar por time</h5>
-              <button class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn" id="team-ct-button">
-                Somente CT
+              <div class="flex">
+                <h5>Filtrar por time</h5>
+                <button
+                  class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                  id="team-ct-button"
+                >
+                  Somente CT
+                </button>
+                <button
+                  class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                  id="team-tr-button"
+                >
+                  Somente TR
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="about">
+            <h4>Geral</h4>
+            <div class="w3-card w3-container flex">
+              <button
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+              >
+                <a href="./view/generalViews.html"
+                  >Gráficos vitórias por side</a
+                >
               </button>
-              <button class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn" id="team-tr-button">
-                Somente TR
+              <button
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+              >
+                <a href="./view/generalViews2.html"
+                  >Gráficos vitórias por rank</a
+                >
+              </button>
+              <button
+                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                onClick="window.location.reload()"
+              >
+                Resetar tudo
               </button>
             </div>
           </div>
         </div>
-        <div class="about">
-          <h4>Geral</h4>
-          <div class="w3-card w3-container flex">
-            <button class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn">
-              <a href="./view/generalViews.html">Gráficos vitórias por side</a>
-            </button>
-            <button class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn">
-              <a href="./view/generalViews2.html">Gráficos vitórias por rank</a>
-            </button>
-            <button class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn" onClick="window.location.reload()">
-              Resetar tudo
-            </button>
+      </div>
+
+      <div class="main">
+        <div class="title">
+          <div>
+            <h3 style="font-weight: 700">
+              Melhore suas habilidades no CS:GO através da visualização de dados
+            </h3>
+            <div class="title-label">
+              <span class="dot"></span>
+              <p>
+                Os círculos representam os locais onde houveram maiores
+                aglomerações de mortes (ao pressionar o botão comparar, o mapa
+                do lado 1 é movido para o lado 2 para que as comparações sejam
+                realizadas)
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="compare-btn">
+          <button
+            id="compare-button"
+            class="w3-btn w3-dark-grey"
+            style="margin-right: 1rem"
+          >
+            COMPARAR
+          </button>
+        </div>
+        <div class="main-container">
+          <div style="margin-right: 1rem">
+            <h4>Lado 1</h4>
+            <div id="left-mapcard" class="w3-half w3-container mapcard"></div>
+          </div>
+          <div>
+            <h4>Lado 2</h4>
+            <div id="right-mapcard" class="w3-half w3-container mapcard"></div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="main">
-      <div class="title">
-        <div>
-          <h3 style="font-weight: 700">
-            Melhore suas habilidades no CS:GO através da visualização de dados
-          </h3>
-          <div class="title-label">
-            <span class="dot"></span>
-            <p>
-              Os círculos representam os locais onde houveram maiores
-              aglomerações de mortes (ao pressionar o botão comparar, o mapa
-              do lado 1 é movido para o lado 2 para que as comparações sejam
-              realizadas)
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="compare-btn">
-        <button id="compare-button" class="w3-btn w3-dark-grey" style="margin-right: 1rem">
-          COMPARAR
-        </button>
-      </div>
-      <div class="main-container">
-        <div style="margin-right: 1rem">
-          <h4 id="lado1">Lado 1</h4>
-          <div id="left-mapcard" class="w3-half w3-container mapcard"></div>
-        </div>
-        <div>
-          <h4 id="lado2">Lado 2</h4>
-          <div id="right-mapcard" class="w3-half w3-container mapcard"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>

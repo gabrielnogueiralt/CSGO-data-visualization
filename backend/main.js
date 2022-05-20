@@ -125,8 +125,6 @@ async function getByTR(map) {
 }
 
 function compare() {
-  document.getElementById("lado2").textContent = document.getElementById("lado1").textContent;
-  document.getElementById("lado1").textContent = 'Lado 1';
   rightMapCard.innerHTML = '';
   rightMapCard.style.backgroundImage = "url('./../assets/maps/" + currentMap + ".png')";
   rightMapCard.innerHTML = leftMapcard.innerHTML;
